@@ -1,13 +1,8 @@
 package com.example.day26_canvas.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.day26_canvas.model.Game;
 import com.example.day26_canvas.service.GameService;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObjectBuilder;

@@ -2,6 +2,8 @@ package com.example.day26_canvas.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +30,8 @@ public class Game implements Serializable {
 
 
    public JsonObject toJson() {
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+          String formattedTimestamp = LocalDateTime.now().format(formatter);
         return Json.createObjectBuilder()
         .add("Gid", this.getGid())
         .add("name", this.getName())
@@ -35,6 +39,7 @@ public class Game implements Serializable {
         .add("ranking", this.getRanking())
         .add("users_rated", this.getUsersRated())
         .add("image", this.getImage())
+        .add("timestamp", formattedTimestamp)
         .build();
    }
 

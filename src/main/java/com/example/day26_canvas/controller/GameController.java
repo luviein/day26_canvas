@@ -11,6 +11,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +41,6 @@ public class GameController {
             JsonObjectBuilder gameBuilder = Json.createObjectBuilder()
                     .add("id", game.getGid())
                     .add("name", game.getName())
-                    .add("year", game.getYear())
-                    .add("ranking", game.getUsersRated())
-                    .add("image", game.getImage())
                     ;
 
             // Add jsonobject to jsonarray
@@ -89,5 +87,12 @@ public class GameController {
         return ResponseEntity.ok().body(jsonResponse);
     }
 
+    @GetMapping(path="/{gameID}",produces="application/json")
+    public ResponseEntity<String>getGamesById(@PathVariable int gameID) {
+        List<Game> game = gameSvc.getGamesById(gameID);
+        return ResponseEntity.ok().body(
+            game.get(0).toJson().toString()
+        );
+    }
     
 }

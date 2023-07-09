@@ -49,4 +49,17 @@ public class GameService {
             )
             .toList();
     }
+
+    public List<Game>getGamesById(Integer gameId) {
+        return gameRepo.getGamesById(gameId).stream()
+            .map(d -> 
+                new Game(d.getInteger("gid"), 
+                d.getString("name"), 
+                d.getInteger("year"), 
+                d.getInteger("ranking"), 
+                d.getInteger("users_rated"), 
+                d.getString("image"))
+            )
+            .toList();
+    }
 }

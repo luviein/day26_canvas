@@ -22,7 +22,7 @@ public class Day26CanvasApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		List<Document> getGames = gameRepo.getGamesByRanking(20, 0);
+		List<Document> getGames = gameRepo.getGamesById(20);
 
 		for(Document d : getGames) {
 			Integer gameID = d.getInteger("gid");
